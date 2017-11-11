@@ -1,2 +1,2 @@
 # satu-data
-Banten satu data
+Banten satu data.
