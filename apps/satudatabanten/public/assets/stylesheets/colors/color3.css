@@ -1,0 +1,224 @@
+/**
+  * Color
+  * Border Color
+  * Background Color  
+*/
+
+/* Color 
+-------------------------------------------------------------- */
+/* Color #e53a40 */
+a:hover,
+.social-links a,
+#mainnav > ul > li > a:hover, #mainnav > ul > li.home > a,
+.menu-extra > ul > li > a:hover,
+.flat-title-section span,
+.entry-meta i, 
+.blog-single .blog-post .entry-header .entry-meta i,
+.widget.widget_recent_entries .post-date:before,
+.footer-widgets .widget.widget_text.information .textwidget i,
+.owl-theme .owl-controls .owl-nav div.owl-prev:before, 
+.owl-theme .owl-controls .owl-nav div.owl-next:before,
+.copyright .copyright-content a,
+#header.upscrolled #mainnav > ul > li.home > a,
+#header.upscrolled #mainnav > ul > li > a:hover,
+.header-widgets .widgets-header-information .info-icon i,
+.breadcrumbs .trail-items li a,
+.button.outline:hover,
+.scheme,
+.flat-member .member-info .member-subtitle,
+.iconlist li i,
+.flat-iconbox .box-readmore a,
+.flat-portfolio.portfolio-grid-alt .portfolio-item .portfolio-wrap .portfolio-info .portfolio-title a, 
+.flat-portfolio.portfolio-masonry .portfolio-item .portfolio-wrap .portfolio-info .portfolio-title a,
+.flat-portfolio.portfolio-grid .portfolio-wrap .portfolio-info .portfolio-categories li a,
+.flat-portfolio.portfolio-grid .portfolio-wrap .portfolio-info .portfolio-categories:before,
+.blog .blog-post .entry-content .readmore .more-link, 
+.blog-single .blog-post .entry-content .readmore .more-link,
+.widget.widget_categories ul li a:before, 
+.widget.widget_pages ul li a:before, .widget.widget_meta ul li a:before,
+.widget.widget_tag_cloud .tagcloud a,
+.navigation .page-numbers,
+.navigation.post-navigation .nav-links li a span,
+.button.bg-scheme2:hover,
+.search-results article .entry-date,
+.widget.widget_products ul li span.amount,
+.products-detail .summary .product_meta .posted_in a,
+#mainnav-mobi .mega-menu .widget.widget_recent_entries a:hover,
+.header-v4 .flat-top .custom-info i
+{
+	color: #e53a40;
+}
+
+/* Color #282c37 */
+a,
+.button.outline.style1:hover,
+.flat-testimonial .testimonial-author .author-name,
+.blog .blog-post .entry-content .readmore .more-link:hover, 
+.blog-single .blog-post .entry-content .readmore .more-link:hover,
+.widget.widget_tag_cloud .tagcloud a:hover,
+.navigation .page-numbers:hover,
+.navigation.post-navigation .nav-links li a,
+.button.bg-scheme2,
+.button.outline
+{
+	color: #282c37;
+}
+
+/* Color #30a9de */
+.counter .counter-image i,
+.breadcrumbs:before,
+.woocommerce .products li .product-info .price,
+.products-detail .summary p.price .amount
+{
+	color: #30a9de;
+}
+
+/* Border Color
+-------------------------------------------------------------- */
+/* Border color #e53a40 */
+.header-v2 .header-wrap:before,
+textarea:focus, input[type="text"]:focus, 
+input[type="password"]:focus, 
+input[type="datetime"]:focus, 
+input[type="datetime-local"]:focus, 
+input[type="date"]:focus, 
+input[type="month"]:focus, 
+input[type="time"]:focus, 
+input[type="week"]:focus, 
+input[type="number"]:focus, 
+input[type="email"]:focus, 
+input[type="url"]:focus, 
+input[type="search"]:focus, 
+input[type="tel"]:focus, 
+input[type="color"]:focus, 
+input.input-text:focus,
+.widget .widget-title,
+.button.outline:hover,
+.history li:after,
+.social-links.style1 a,
+.navigation .page-numbers.current,
+.navigation .page-numbers,
+.blog-single .blog-post .entry-content blockquote,
+.flat-title-section.style3,
+.sw-even a:hover
+{
+	border-color: #e53a40 ;
+}
+
+.blog .blog-post .entry-time:after, .blog-single .blog-post .entry-time:after {
+	border-top-color: #e53a40;
+}
+
+/* Border color #282c37 */
+.button.outline.style1:hover,
+.navigation .page-numbers:hover,
+.button.outline
+{
+	border-color: #282c37 ;
+}
+
+/* Background Color
+-------------------------------------------------------------- */
+/* Background color #e53a40 */
+#mainnav ul.submenu,
+#mainnav > ul > li > a:hover:after,
+.flat-button-slider.bg-button-slider-32bfc0,
+.flat-button-slider:hover,
+.bg-scheme,
+.button.black:hover,
+.button.bg-scheme3:hover,
+.imagebox .box-header .box-title:after,
+.iconbox.style1 .box-header .box-icon i:after,
+button, input[type="button"], 
+input[type="reset"], 
+input[type="submit"], 
+.button,
+.blog-shortcode .blog-post .entry-cover a:before,
+.flat-title-section.title-center:after,
+.content-bottom-widgets .subscribe-form input[type="submit"]:hover,
+.go-top:hover,
+.footer-content .social-links a,
+.general-sidebars .widget.widget_nav_menu ul li a:before,
+.widget.widget_text .textwidget .content-text,
+.flat-tabs ul.menu-tabs li.active a:before,
+.history li .year,
+.history li:last-child:after,
+.history li .year:after,
+.flat-accordion .flat-toggle .toggle-title.active,
+.flat-accordion.style1 .flat-toggle .toggle-title.active:after,
+.flat-title-section.style2:after,
+.flat-portfolio ul.portfolio-filter li.active a,
+.flat-portfolio.portfolio-grid-alt .portfolio-item .portfolio-wrap .portfolio-thumbnail .project-buttons a, 
+.flat-portfolio.portfolio-masonry .portfolio-item .portfolio-wrap .portfolio-thumbnail .project-buttons a,
+.flat-portfolio.portfolio-grid .portfolio-wrap .portfolio-thumbnail .project-buttons a,
+.blog .blog-post .entry-time, .blog-single .blog-post .entry-time,
+.blog .blog-post .entry-cover a:before, 
+.blog-single .blog-post .entry-cover a:before,
+.navigation .page-numbers.current,
+.navigation.post-navigation .nav-links li a:after,
+.button.bg-scheme2,
+.search-results article .counter,
+.btn-menu:before,
+.btn-menu:after, 
+.btn-menu span,
+.sw-even a:hover,
+#mainnav > ul > li.home > a:after,
+#mainnav .mega-menu,
+.header-v4 .header-menu-v4 #mainnav > ul > li.home > a:after,
+.header-v4 .flat-top
+{
+	background-color: #e53a40;
+}
+
+/* Background color #282c37 */
+.flat-top,
+#mainnav ul.submenu > li > a:hover,
+.flat-button-slider.bg-button-slider-32bfc0:hover,
+.flat-button-slider,
+.button.black,
+.overlay.bg-scheme1,
+input[type="submit"]:hover, 
+button[type="submit"]:hover, 
+.button:hover,
+.footer,
+.go-top,
+.button.bg-scheme3.style1:hover,
+.header-v4 .header-menu-v4 .nav-wrap,
+.general-sidebars .widget.widget_nav_menu ul li,
+.flat-accordion.style1 .flat-toggle .toggle-title:before,
+.flat-tabs ul.menu-tabs,
+.flat-portfolio ul.portfolio-filter li a,
+.portfolio .portfolio-wrap .portfolio-thumbnail > a,
+.blog .blog-post .entry-cover a, 
+.blog-single .blog-post .entry-cover a,
+.blog-single .blog-post .entry-footer .entry-tags a,
+.navigation.post-navigation .nav-links li:hover a:after,
+.blog-shortcode .blog-post .entry-cover a,
+.button.bg-scheme2:hover,
+.widget.widget_price_filter .price_filter
+{
+	background-color: #282c37;
+}
+
+/* Background color #30a9de */
+.flat-top .custom-info i,
+.shopping-cart .shopping-cart-items-count,
+.button.bg-scheme3,
+.iconbox.style1:hover .box-header .box-icon i:after,
+.bg-scheme1,
+.blog-shortcode .blog-post .entry-header .entry-time,
+.content-bottom-widgets .subscribe-form input[type="submit"],
+.footer-content .social-links a:hover,
+.general-sidebars .widget.widget_nav_menu ul li a.active:before,
+.general-sidebars .widget.widget_nav_menu ul li a:hover:before,
+.promobox,
+.history li:last-child .year:after, 
+.history li:last-child .year,
+.overlay,
+.flat-portfolio.portfolio-grid-alt .portfolio-item .portfolio-wrap .portfolio-thumbnail .project-buttons a:hover, 
+.flat-portfolio.portfolio-masonry .portfolio-item .portfolio-wrap .portfolio-thumbnail .project-buttons a:hover,
+.flat-portfolio.portfolio-grid .portfolio-wrap .portfolio-thumbnail:hover .project-buttons a:hover,
+.blog-single .blog-post .entry-footer .entry-tags a:hover
+{
+	background-color: #30a9de;
+}
