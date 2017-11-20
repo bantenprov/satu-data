@@ -207,7 +207,7 @@
                             </div>
                             <div class="copyright">
                                 <div class="copyright-content">
-                                    Copyright © 2017 Satu Data Banten by <a href="#" target="_blank">PT. Mediatama Kreasi Informatika</a>
+                                    Copyright © 2017 Satu Data Banten <a href="#" target="_blank">Pemerintah Provinsi Banten</a>
                                 </div>
                             </div>
                         </div><!-- /.ft-wrap -->
