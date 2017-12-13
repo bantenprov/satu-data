@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cfcf2d901b2367fd9f5c76513bd98dc",
+    "content-hash": "4c649c4d777d085b721e0ffcf4e5d1f2",
     "packages": [
         {
             "name": "bantenprov/advancetrust",
@@ -66,19 +66,20 @@
         },
         {
             "name": "bantenprov/laravel-opd",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bantenprov/laravel-opd.git",
-                "reference": "d51b4fced7f1670ab18067214605a753b2352845"
+                "reference": "aafe5101fd6aa04826fa8b0c4eccbf05b7a44639"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bantenprov/laravel-opd/zipball/d51b4fced7f1670ab18067214605a753b2352845",
-                "reference": "d51b4fced7f1670ab18067214605a753b2352845",
+                "url": "https://api.github.com/repos/bantenprov/laravel-opd/zipball/aafe5101fd6aa04826fa8b0c4eccbf05b7a44639",
+                "reference": "aafe5101fd6aa04826fa8b0c4eccbf05b7a44639",
                 "shasum": ""
             },
             "require": {
+                "emadadly/laravel-uuid": "^1.2",
                 "illuminate/support": "5.4.*",
                 "kalnoy/nestedset": "^4.3",
                 "php": ">=5.6.4"
@@ -93,14 +94,20 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
                     "name": "bantenprov",
-                    "email": "developer.bantenprov@gmail.com"
+                    "email": "developer.bantenprov@gmail.com",
+                    "homepage": "http://dev.bantenprov",
+                    "role": "Developer"
                 }
             ],
             "description": "Repository untuk membuat melakukan proses data Organisasi Perangkat Daerah",
-            "time": "2017-11-11T14:20:52+00:00"
+            "homepage": "https://github.com/bantenprov/laravel-opd",
+            "time": "2017-12-10T12:55:44+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -201,6 +208,66 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "emadadly/laravel-uuid",
+            "version": "v1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/EmadAdly/laravel-uuid.git",
+                "reference": "c5e6edd2ecd4048e420fc2a3ae828fbb1982de58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/EmadAdly/laravel-uuid/zipball/c5e6edd2ecd4048e420fc2a3ae828fbb1982de58",
+                "reference": "c5e6edd2ecd4048e420fc2a3ae828fbb1982de58",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.2.*|5.3.*|5.4.*|5.5.*",
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "laravel/framework": "5.2.*|5.3.*|5.4.*|5.5.*",
+                "phpunit/phpunit": "5.5.*",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Emadadly\\LaravelUuid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emad Adly",
+                    "email": "thedevgist@gmail.com",
+                    "homepage": "http://devgist.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "laravel uuid a simple, automatic UUID generator for any model based on Laravel.",
+            "homepage": "https://github.com/emadadly/laravel-uuid",
+            "keywords": [
+                "Laravel UUID",
+                "emadadly",
+                "generator",
+                "guid",
+                "laravel",
+                "laravel-guid",
+                "laravel-uuid",
+                "uuid"
+            ],
+            "time": "2017-09-02T23:55:29+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -333,16 +400,16 @@
         },
         {
             "name": "kalnoy/nestedset",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lazychaser/laravel-nestedset.git",
-                "reference": "0adbe74307fe614eb71b4f67caccf6f3758715a9"
+                "reference": "892b9a730fbb70d16a66f58f8eb2a46164cb3609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/0adbe74307fe614eb71b4f67caccf6f3758715a9",
-                "reference": "0adbe74307fe614eb71b4f67caccf6f3758715a9",
+                "url": "https://api.github.com/repos/lazychaser/laravel-nestedset/zipball/892b9a730fbb70d16a66f58f8eb2a46164cb3609",
+                "reference": "892b9a730fbb70d16a66f58f8eb2a46164cb3609",
                 "shasum": ""
             },
             "require": {
@@ -383,7 +450,7 @@
                 "nested sets",
                 "nsm"
             ],
-            "time": "2017-08-30T19:16:05+00:00"
+            "time": "2017-11-26T07:18:24+00:00"
         },
         {
             "name": "kkszymanowski/traitor",
@@ -2234,67 +2301,6 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
-        },
-        {
-            "name": "yajra/laravel-datatables-oracle",
-            "version": "v7.10.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "8e217bf1be307c8e7e52fa6a5071b985568bc04c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/8e217bf1be307c8e7e52fa6a5071b985568bc04c",
-                "reference": "8e217bf1be307c8e7e52fa6a5071b985568bc04c",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "5.4.*",
-                "illuminate/filesystem": "5.4.*",
-                "illuminate/http": "5.4.*",
-                "illuminate/support": "5.4.*",
-                "illuminate/view": "5.4.*",
-                "php": ">=5.6.4"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "orchestra/testbench": "^3.4",
-                "phpunit/phpunit": "~5.7"
-            },
-            "suggest": {
-                "league/fractal": "Transform your api response into something you won't hate.",
-                "yajra/laravel-datatables-buttons": "Plugin for server-side exporting of dataTable.",
-                "yajra/laravel-datatables-html": "Plugin for server-side HTML builder of dataTable."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "7.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Yajra\\Datatables\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arjay Angeles",
-                    "email": "aqangeles@gmail.com"
-                }
-            ],
-            "description": "jQuery DataTables API for Laravel 4|5",
-            "keywords": [
-                "datatables",
-                "jquery",
-                "laravel"
-            ],
-            "time": "2017-08-31T01:27:45+00:00"
         }
     ],
     "packages-dev": [

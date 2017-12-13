@@ -45,7 +45,7 @@
         $(document).ready(function() {
             $(function() {
                 var tbl = $('#table1').DataTable({
-                    "order": [[ 1, "asc" ]],
+                    "order": [[ 0, "desc" ]],
                     "aoColumns": [
                         { "sClass": "text-center" },
                         { "sClass": "text-left" },

@@ -7,45 +7,46 @@
         {!! $header !!}
         <div class="card">
             <div class="card-header">
-                <h2>Ubah Pengaturan Aplikasi <small>Ubah pengaturan aplikasi yang anda butuhkan dengan mengisi form di bawah.</small></h2>
+                <h2>Ubah Halaman Tentang <small>Ubah isi halaman tentang di frontend.</small></h2>
             </div>
             <div class="card-body card-padding">
-                <form id="formValidate" action="{{ route('application.update.save',base64_encode($app->setting_id))  }}" method="post">
+                <form id="formValidate" action="{{ route('about.update.save',base64_encode($about->id))  }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
-                        <div class="col-sm-2">
-                            <div class="form-group fg-float">
-                                <div class="fg-line">
-                                    <input id="settingCode" class="form-control fg-input" name="settingCode" type="text" value="{{ $app->setting_code }}">
-                                </div>
-                                <label class="fg-label">Kode*</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="col-sm-4">
-                            <div class="form-group fg-float">
+                            <label class="fg-label">Judul*</label>
+                            <div class="form-group">
                                 <div class="fg-line">
-                                    <input id="settingName" class="form-control fg-input" name="settingName" value="{{ $app->setting_name }}" type="text">
+                                    <input id="aboutTitle" class="form-control fg-input" name="aboutTitle" value="{{ $about->title }}" type="text">
                                 </div>
-                                <label class="fg-label">Nama*</label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-10">
-                            <div class="form-group fg-float">
-                                <div class="fg-line">
-                                    <textarea id="settingValue" class="form-control fg-input" name="settingValue" class="materialize-textarea validate" rows="5">{{ $app->setting_value }}</textarea>
-                                </div>
-                                <label class="fg-label">Deskripsi*</label>
+                        <div class="col-sm-12">
+                            <label for="">Isi Halaman*</label>
+                            <br><br>
+                            <div class="form-group">
+                                <textarea name="aboutContent" id="aboutContent" class="html-editor" rows="5">{{ $about->content }}</textarea>
                             </div>
                         </div>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                                        <span class="btn btn-primary btn-file m-r-10 waves-effect">
+                                            <span class="fileinput-new">Select file</span>
+                                            <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="aboutImage">
+                                        </span>
+                            <span class="fileinput-filename"></span>
+                            <a href="#" class="close fileinput-exists" data-dismiss="fileinput">×</a>
+                        </div>
+                        <input type="hidden" name="aboutOldImage" value="{{ $about->image }}">
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-sm-12 text-right">
-                            <a href="{{ route('application') }}" class="btn btn-default btn-icon-text waves-effect"><i class="zmdi zmdi-arrow-back"></i> Kembali</a>
+                            <a href="{{ route('about') }}" class="btn btn-default btn-icon-text waves-effect"><i class="zmdi zmdi-arrow-back"></i> Kembali</a>
                             <button type="submit" class="btn btn-primary btn-icon-text waves-effect"><i class="zmdi zmdi-save"></i> Simpan</button>
                         </div>
                     </div>
@@ -65,15 +66,13 @@
                     $(element).closest('.form-group').removeClass('has-error');
                 },
                 rules: {
-                    settingCode: "required",
-                    settingName: "required",
-                    settingValue: "required"
+                    aboutTitle: "required",
+                    aboutContent: "required"
                 },
                 //For custom messages
                 messages: {
-                    settingCode: "Masukkan kode pengaturan",
-                    settingName: "Masukkan nama pengaturan",
-                    settingValue: "Masukkan deskripsi pengaturan"
+                    aboutTitle: "Masukkan Judul.",
+                    aboutContent: "Masukkan Isi."
                 },
                 errorElement: 'div',
                 errorPlacement: function(error, element) {
@@ -81,16 +80,19 @@
                     if (placement) {
                         $(placement).append(error)
                     } else {
-                        error.insertAfter(element);
+                        error.insertAfter(element.closest('.fg-line'));
                     }
                 },
                 submitHandler: function(form) {
                     var url = $(form).attr('action');
-                    var data = $(form).serialize();
+                    var data = new FormData($(form)[0]);
                     $.ajax({
                         type:'POST',
                         url: url,
                         data: data,
+                        contentType: false,
+                        cache: false,
+                        processData:false,
                         success:function(response){
                             location.href = response.redirect;
                             notify(response.status, response.title, response.message);

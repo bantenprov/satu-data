@@ -165,7 +165,8 @@ return [
         bantenprov\advancetrust\advancetrustServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         'That0n3guy\Transliteration\TransliterationServiceProvider',
-        Yajra\Datatables\DatatablesServiceProvider::class,
+        Bantenprov\LaravelOpd\LaravelOpdServiceProvider::class,
+        Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -180,7 +181,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Bantenprov\LaravelOpd\LaravelOpdServiceProvider::class,
 
     ],
 
@@ -231,7 +231,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Laratrust'   => Laratrust\LaratrustFacade::class,
-        'Datatables' => Yajra\Datatables\Facades\Datatables::class,
         'Opd' => Bantenprov\LaravelOpd\Facades\LaravelOpd::class,
 
     ],

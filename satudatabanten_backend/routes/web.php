@@ -108,5 +108,10 @@ Route::group(['prefix' => 'setting','middleware' => 'auth'],function(){
     Route::get('/users/activate/{id}',['as'=>'user.activate','uses'=>'Setting\UserController@activateUser','middleware'=>'permission:update-users']);
     Route::get('/users/unactivate/{id}',['as'=>'user.unactivate','uses'=>'Setting\UserController@unactivateUser','middleware'=>'permission:delete-users']);
     # ---------------------------------------------------------------------------------------------------------------------------------------------------------
+    /* Abouts */
+    Route::get('/about',['as'=>'about','uses'=>'Setting\AboutController@getIndex','middleware'=>'permission:read-about']);
+    Route::get('/about/update/{id}',['as'=>'about.update','uses'=>'Setting\AboutController@updateAbout','middleware'=>'permission:update-about']);
+    Route::post('/about/update/{id}',['as'=>'about.update.save','uses'=>'Setting\AboutController@updateAboutSave','middleware'=>'permission:update-about']);
+    # ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 });

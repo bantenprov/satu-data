@@ -7,10 +7,9 @@
     "require": {
         "php": ">=5.6.4",
         "bantenprov/advancetrust": "^1.0",
-        "bantenprov/laravel-opd": "1.0.0",
+        "bantenprov/laravel-opd": "1.0.1",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0",
-        "yajra/laravel-datatables-oracle": "^7.10"
+        "laravel/tinker": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

@@ -82,7 +82,7 @@
         $(document).ready(function() {
             $(function() {
                 var tbl1 = $('#table1').DataTable({
-                    "order": [[ 1, "asc" ]],
+                    "order": [[ 0, "desc" ]],
                     "aoColumns": [
                         { "sClass": "text-center" },
                         { "sClass": "text-left" },
@@ -110,7 +110,7 @@
                 });
 
                 var tbl2 = $('#table2').DataTable({
-                    "order": [[ 1, "asc" ]],
+                    "order": [[ 0, "desc" ]],
                     "aoColumns": [
                         { "sClass": "text-center" },
                         { "sClass": "text-left" },
@@ -132,23 +132,8 @@
                             "cache": false
                         });
                     },
-                    "language": {
-                        "aria": {
-                            "sortAscending": ": activate to sort column ascending",
-                            "sortDescending": ": activate to sort column descending"
-                        },
-                        "paginate": {
-                            "previous":      "<i class='fa fa-chevron-left'>",
-                            "next":       "<i class='fa fa-chevron-right'>"
-                        },
-                        "emptyTable": "Data tidak tersedia",
-                        "info": "Menampilkan: _START_ sampai _END_ dari _TOTAL_ data",
-                        "infoEmpty": "Menampilkan: 0 Data",
-                        "infoFiltered": "",
-                        "lengthMenu": "Menampilkan: _MENU_ Data",
-                        "search": "Pencarian: ",
-                        "zeroRecords": "Pencarian Tidak Ditemukan",
-                        "sProcessing": "Proses Pengambilan Data",
+                    "oLanguage": {
+                        "sEmptyTable":     "333My Custom Message On Empty Table"
                     },
                     "fnDrawCallback": function (e) {
                         $('[data-toggle="tooltip"]').tooltip();

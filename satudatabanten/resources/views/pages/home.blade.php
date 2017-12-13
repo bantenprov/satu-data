@@ -5,10 +5,11 @@
 @section('content')
     <!-- Slider -->
     <div class="tp-banner-container">
-        <div class="tp-banner" >
+        <div class="tp-banner">
             <ul>
                 <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                    <div class="cover"><img src="{{ asset('assets/images/slides/1.jpg') }}" alt="slider-image" /></div>
+                    <img src="{{ asset('assets/images/slides/1.jpg') }}" alt="slider-image"/>
+                    <div class="pixel-overlay"></div>
                     <div class="tp-caption sfl title-slide text-center" data-x="center" data-y="203" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
                         Beragam Tempat Wisata <br> Adalah Sejarah Yang Kami Jaga.
                     </div>
@@ -23,7 +24,8 @@
                 </li>
 
                 <li data-transition="random-static" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                    <div class="cover"><img src="{{ asset('assets/images/slides/2.jpg') }}" alt="slider-image" /></div>
+                    <img src="{{ asset('assets/images/slides/2.jpg') }}" alt="slider-image" />
+                    <div class="pixel-overlay"></div>
                     <div class="tp-caption sfl title-slide text-center" data-x="center" data-y="203" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
                         Kami Menyatu Dengan Alam <br> Agar Terjaga Keindahan nya.
                     </div>
@@ -37,7 +39,8 @@
                 </li>
 
                 <li data-transition="slidedown" data-slotamount="7" data-masterspeed="1000" data-saveperformance="on">
-                    <div class="cover"><img src="{{ asset('assets/images/slides/3.jpg') }}" alt="slider-image" /></div>
+                    <img src="{{ asset('assets/images/slides/3.jpg') }}" alt="slider-image"/>
+                    <div class="pixel-overlay"></div>
                     <div class="tp-caption sfl title-slide text-center" data-x="center" data-y="203" data-speed="1000" data-start="1000" data-easing="Power3.easeInOut">
                         Keindahan Pantai <br> Adalah Kebanggaan Kami.
                     </div>
@@ -294,7 +297,7 @@
                 <div class="col-md-3 col-md-offset-2">
                     <div class="counter">
                         <div class="counter-content">
-                            <span class="numb-count" data-to="{{ $count->total_dataset }}" data-speed="3000" data-waypoint-active="yes">{{ $count->total_dataset }}</span>
+                            <span class="numb-count" data-to="{{ (!empty($count) ? $count->total_dataset : '0') }}" data-speed="3000" data-waypoint-active="yes">{{ (!empty($count) ? $count->total_dataset : '0') }}</span>
                         </div>
                         <div class="counter-title">DATASET</div>
                     </div><!-- /.counter -->
@@ -302,7 +305,7 @@
                 <div class="col-md-2">
                     <div class="counter">
                         <div class="counter-content">
-                            <span class="numb-count" data-to="{{ $count->total_organization }}" data-speed="3000" data-waypoint-active="yes">{{ $count->total_organization }}</span>
+                            <span class="numb-count" data-to="{{ (!empty($count) ? $count->total_organization : '0') }}" data-speed="3000" data-waypoint-active="yes">{{ (!empty($count) ? $count->total_organization : '0') }}</span>
                         </div>
                         <div class="counter-title">ORGANISASI</div>
                     </div><!-- /.counter -->
@@ -310,7 +313,7 @@
                 <div class="col-md-3">
                     <div class="counter">
                         <div class="counter-content">
-                            <span class="numb-count" data-to="{{ $count->total_group }}" data-speed="3000" data-waypoint-active="yes">{{ $count->total_group }}</span>
+                            <span class="numb-count" data-to="{{ (!empty($count) ? $count->total_group : '0') }}" data-speed="3000" data-waypoint-active="yes">{{ (!empty($count) ? $count->total_group : '0') }}</span>
                         </div>
                         <div class="counter-title">GRUP</div>
                     </div><!-- /.counter -->

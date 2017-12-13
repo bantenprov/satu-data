@@ -12,3 +12,4 @@
 */
 
 Route::get('/', ['as'=>'home','uses'=>'Home\HomeController@getIndex']);
+Route::get('/about', ['as'=>'about','uses'=>'Home\HomeController@getAbout']);

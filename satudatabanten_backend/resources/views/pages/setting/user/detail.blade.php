@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title','Satu Data | Aplikasi')
+@section('title','Satu Data | Pengguna')
 
 @section('content')
     <div class="container">

@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SysSettings;
 use Illuminate\Support\Facades\DB;
-use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 class ApplicationController extends Controller
 {
@@ -28,44 +26,54 @@ class ApplicationController extends Controller
 
     public function getList(Request $request)
     {
-        DB::statement(DB::raw('set @rownum=0'));
-        $datas = DB::table('view_settings')
-            ->select([DB::raw('@rownum  := @rownum + 1 AS rownum'),
-                'setting_id',
-                'setting_code',
-                'setting_name',
-                'setting_value',
-                'setting_create_date',
-                'setting_status',
-                'setting_status_name'])
-            ->get();
-        $datatables = Datatables::of($datas)
-            ->addColumn('setting_create_date', function ($datas) {
-                return dateEnToId($datas->setting_create_date,'d M Y');
-            })
-            ->addColumn('setting_status_name', function ($datas) {
-                if($datas->setting_status > 0) {
-                    $status = '<span class="badge bgm-lightgreen">'.$datas->setting_status_name.'</span>';
-                }else{
-                    $status = '<span class="badge bgm-red">'.$datas->setting_status_name.'</span>';
+        $default_order = 'setting_id';
+        $order_field = array(
+            'setting_code',
+            'setting_name',
+            'setting_value',
+            'setting_create_date'
+        );
+        $order_key 	= (!$request->input('iSortCol_0'))?0:$request->input('iSortCol_0');
+        $order 		= (!$request->input('iSortCol_0'))?$default_order:$order_field[$order_key];
+        $sort 		= (!$request->input('sSortDir_0'))?'desc':$request->input('sSortDir_0');
+        $search 	= (!$request->input('sSearch'))?'':strtoupper($request->input('sSearch'));
+
+        $limit 		= (!$request->input('iDisplayLength'))?10:$request->input('iDisplayLength');
+        $start 		= (!$request->input('iDisplayStart'))?0:$request->input('iDisplayStart');
+
+        $sEcho 			= (!$request->input('callback'))?0:$request->input('callback');
+        $iTotalRecords 	= DB::table('view_settings')->count();
+
+        $query = DB::table('view_settings');
+        if($search!='' AND $order_field!=''){
+            $likeclause = '';
+            $i=0;
+            foreach($order_field as $field){
+                if($i==count($order_field)-1) {
+                    $likeclause .= "UPPER(".$field.") LIKE '%".strtoupper($search)."%'";
+                } else {
+                    $likeclause .= "UPPER(".$field.") LIKE '%".strtoupper($search)."%' OR ";
                 }
-                return $status;
-            })
-            ->addColumn('action', function ($datas) {
-                $action = (Auth::user()->can('read-applications') ? '<a href="'.route('application.detail',base64_encode($datas->setting_id)).'" class="btn btn-primary waves-effect" data-toggle="tooltip" data-original-title="Detil" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-format-subject"></i></a>':'');
-                if($datas->setting_status > 0){
-                    $action .= (Auth::user()->can('update-applications') ? '&nbsp;<a href="'.route('application.update',base64_encode($datas->setting_id)).'" class="btn btn-warning waves-effect update-btn" data-toggle="tooltip" data-original-title="Ubah" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-edit"></i></a>':'');
-                    $action .= (Auth::user()->can('delete-applications') ? '&nbsp;<a href="'.route('application.unactivate',base64_encode($datas->setting_id)).'" class="btn btn-danger waves-effect unactivate-btn" data-toggle="tooltip" data-original-title="Non-Aktifkan" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-close"></i></a>':'');
-                }else{
-                    $action .= (Auth::user()->can('update-applications') ? '&nbsp;<a href="'.route('application.activate',base64_encode($datas->setting_id)).'" class="btn btn-success waves-effect activate-btn" data-toggle="tooltip" data-original-title="Aktifkan" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-check"></i></a>':'');
-                }
-                return $action;
-            })
-            ->rawColumns(['setting_status_name','action','setting_value']);
-        if ($keyword = $request->get('search')['value']) {
-            $datatables->filterColumn('rownum', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+                ++$i;
+            }
+            $query = $query->whereRaw($likeclause);
         }
-        return $datatables->make(true);
+
+        if (empty($order) || empty($sort)){
+            $query = $query->orderBy('setting_id','ASC');
+        } else {
+            $query = $query->orderBy($order, $sort);
+        }
+        $applications = $query->limit($limit)->offset($start)->get();
+        $start      = (($start == 0) ? 0 : $start);
+        $callback 	= $request->input('callback');
+        return view('pages.setting.application.json')
+            ->with('sEcho', $sEcho)
+            ->with('iTotalRecords', $iTotalRecords)
+            ->with('applications', $applications)
+            ->with('start', $start)
+            ->with('callback', $callback);
+
     }
 
     public function detailApplication(Request $request, $id)
@@ -100,9 +108,9 @@ class ApplicationController extends Controller
         $app->setting_name = $request->input('settingName');
         $app->setting_value = $request->input('settingValue');
         if($app->save()) {
-            $responses = array('redirect' => route('application'), 'message' => 'Perubahan telah disimpan.');
+            $responses = array('redirect' => route('application'), 'status'=> 'success', 'title' => 'Berhasil!', 'message' => 'Perubahan telah disimpan.');
         } else {
-            $responses = array('redirect' => route('application.update',$id),'message' => 'Terjadi kesalaahan. Perubahan gagal disimpan.');
+            $responses = array('redirect' => route('application.update',$id), 'status'=> 'danger', 'title' => 'Gagal!', 'message' => 'Terjadi kesalahan. Perubahan gagal disimpan.');
         }
         return response()->json($responses);
     }

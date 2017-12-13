@@ -19,13 +19,14 @@
     <link href="{{ asset('vendors/datatables/css/dataTables.bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('icon/favicon.png') }}" rel="shortcut icon">
     <link href="{{ asset('vendors/chosen_v1.4.2/chosen.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendors/bower_components/summernote/dist/summernote.css') }}" rel="stylesheet">
 
     <!-- CSS -->
     <link href="{{ asset('css/app.min.1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.min.2.css') }}" rel="stylesheet">
 
 </head>
-<body>
+<body class="sw-toggled">
 <header id="header">
     <ul class="header-inner">
         <li id="menu-trigger" data-trigger="#sidebar">
@@ -391,6 +392,7 @@
 <script src="{{ asset('vendors/bootstrap-growl/bootstrap-growl.min.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js') }}"></script>
+<script src="{{ asset('vendors/bower_components/summernote/dist/summernote.min.js') }}"></script>
 <!-- DataTables -->
 <script src="{{ asset('vendors/datatables/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendors/datatables/js/dataTables.bootstrap.min.js') }}"></script>

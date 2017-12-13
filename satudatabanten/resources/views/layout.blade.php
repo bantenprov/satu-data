@@ -33,10 +33,22 @@
     <link href="{{ asset('assets/icon/favicon.png') }}" rel="shortcut icon">
 
     <style>
-        .cover > img{
-            filter: brightness(70%);
-            -webkit-filter: brightness(70%);
-            -moz-filter: brightness(70%);
+        .slotholder {
+            filter: brightness(80%);
+            -webkit-filter: brightness(80%);
+        }
+        .pixel-overlay {
+            position:absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url({{ asset('assets/images/pattern.png') }});
+        }
+        .flat-row.flat-video.video-bg {
+            padding-top: 20px;
+            padding-bottom: 310px;
+            text-align: center;
         }
     </style>
 
@@ -91,7 +103,7 @@
                         <div class="flat-wrapper">
                             <div id="logo" class="logo">
                                 <a href="index.html">
-                                    <img src="{{ asset('assets/images/logo.png') }}" alt="images">
+                                    <img src="{{ asset('assets/images/opendata.png') }}" alt="images">
                                 </a>
                             </div><!-- /.logo -->
                             <div class="btn-menu">
@@ -101,12 +113,13 @@
                             <div class="nav-wrap">
                                 <nav id="mainnav" class="mainnav">
                                     <ul class="menu">
-                                        <li class="home"><a href="{{ url('/') }}">Beranda</a></li>
+                                        <li @if(Request::segment(1) == '') class="home" @endif><a href="{{ url('/') }}">Beranda</a></li>
                                         <li><a href="http://satudata-banten.mkitech.co.id/dataset">Data</a></li>
-                                        <li><a href="#">Berita</a></li>
-                                        <li><a href="#">Aplikasi</a></li>
+                                        {{--<li><a href="#">Berita</a></li>--}}
+                                        {{--<li><a href="#">Aplikasi</a></li>--}}
                                         <li><a href="http://satudata-banten.mkitech.co.id/organization">Organisasi</a></li>
-                                        <li><a href="#">Tentang</a></li>
+                                        <li><a href="http://satudata-banten.mkitech.co.id/group">Grup</a></li>
+                                        <li @if(Request::segment(1) == 'about') class="home" @endif><a href="{{ route('about') }}">Tentang</a></li>
                                     </ul><!-- /.menu -->
                                 </nav><!-- /.mainnav -->
                             </div><!-- /.nav-wrap -->
@@ -234,11 +247,12 @@
 <script type="text/javascript" src="{{ asset('assets/javascript/jquery-countTo.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/javascript/jquery.fancybox.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/javascript/jquery.flexslider-min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('assets/javascript/jquery.cookie.js') }}"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ asset('assets/javascript/jquery.cookie.js') }}"></script
 <script type="text/javascript" src="{{ asset('assets/javascript/gmap3.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/javascript/jquery-validate.js') }}"></script>
 <script type="text/javascript" src="{{ asset('assets/javascript/parallax.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/javascript/jquery.magnific-popup.min.js') }}"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="{{ asset('assets/javascript/main.js') }}"></script>
 
 <!-- Revolution Slider -->

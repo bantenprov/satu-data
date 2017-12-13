@@ -2768,7 +2768,7 @@ a.link:hover {
 	background-repeat: repeat;
 }
 
-.parallax1 { background-image: url(../images/parallax/bg-parallax1.png); }
+.parallax1 { background-image: url(../images/parallax/bg-parallax1.png); background-size: cover; }
 
 .parallax2 { background-image: url(../images/parallax/bg-parallax2.jpg); }
 

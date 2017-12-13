@@ -37,7 +37,11 @@ if(count($groups))
     }
 } else {
     for($i=0;$i<9;++$i) {
-        $results['aaData'][0][$i] = '';
+        if($i == 3){
+            $results['aaData'][0][$i] = '<center>Tidak Ada Data.</center>';
+        }else{
+            $results['aaData'][0][$i] = '';
+        }
     }
 }
 print($callback.'('.json_encode($results).')');

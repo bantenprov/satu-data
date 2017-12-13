@@ -5,6 +5,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Kalnoy\Nestedset\NestedSet;
 
+
+
 class CreateLaravelOpdTable extends Migration
 {
     /**
@@ -14,16 +16,19 @@ class CreateLaravelOpdTable extends Migration
      */
     public function up()
     {
-        
-
-        Schema::create('ref_unkerjas', function (Blueprint $table) {            
-            $table->increments('id');
-            $table->string('kunker',191)->index();
-            $table->string('name',191);
-            $table->string('kunker_simral',191)->nullable();
+        Schema::create('opd', function (Blueprint $table) {
+            //$table->increments('id');
+            $table->uuid('id')->unique();
+            $table->primary('id');
+            $table->string('kunker')->index();
+            $table->string('name');
+            $table->string('kunker_sinjab')->nullable();            
+            $table->string('kunker_simral')->nullable();
             $table->integer('levelunker');
+            $table->string('njab');
+            $table->string('npej');
             NestedSet::columns($table);
-            $table->timestamps();            
+            $table->timestamps();   
         });
     }
 
@@ -34,6 +39,6 @@ class CreateLaravelOpdTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ref_unkerjas');
+        Schema::dropIfExists('opd');
     }
 }

@@ -48,16 +48,14 @@ class DatasetController extends Controller
         $this->setParamGet('view',2);
         $this->setParamGet('order_field',$order_key);
         $this->setParamGet('sort_field',$sort);
-        $this->setParamGet('visibility',1);
+        $this->setParamGet('visibility',0);
         if($search != ''){
             $this->setParamGet('keyword', $search);
         }
         $datas = $this->doRead('get');
-
         $sEcho 			= (!$request->input('callback'))?0:$request->input('callback');
-        $iTotalRecords 	= $datas['results']->total_result;
-
-        $datasets 	= $datas['results']->datasets;
+        $iTotalRecords 	= ($datas['status'] > 0 ? $datas['results']->total_result : 0);
+        $datasets 	= ($datas['status'] > 0 ? $datas['results']->datasets : array());
         $start      = (($start == 0) ? 0 : $start);
         $callback 	= $request->input('callback');
         return view('pages.dataset.jsonpublic')
@@ -100,9 +98,9 @@ class DatasetController extends Controller
         $datas = $this->doRead('get');
 
         $sEcho 			= (!$request->input('callback'))?0:$request->input('callback');
-        $iTotalRecords 	= $datas['results']->total_result;
+        $iTotalRecords 	= ($datas['status'] > 0 ? $datas['results']->total_result : 0);
 
-        $datasets 	= $datas['results']->datasets;
+        $datasets 	= ($datas['status'] > 0 ? $datas['results']->datasets : array());
         $start      = (($start == 0) ? 0 : $start);
         $callback 	= $request->input('callback');
         return view('pages.dataset.jsonprivate')

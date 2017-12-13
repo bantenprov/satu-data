@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Yajra\Datatables\Datatables;
-use Illuminate\Support\Collection;
 
 class GroupController extends Controller
 {
@@ -55,9 +53,9 @@ class GroupController extends Controller
         $datas = $this->doRead('get');
 
         $sEcho 			= (!$request->input('callback'))?0:$request->input('callback');
-        $iTotalRecords 	= $datas['results']->total_result;
+        $iTotalRecords 	= ($datas['status'] > 0 ? $datas['results']->total_result : 0);
 
-        $groups 	= $datas['results']->groups;
+        $groups 	= ($datas['status'] > 0 ? $datas['results']->groups : array());
         $start      = (($start == 0) ? 0 : $start);
         $callback 	= $request->input('callback');
         return view('pages.group.json')
@@ -68,7 +66,7 @@ class GroupController extends Controller
             ->with('callback', $callback);
     }
 
-    public function createGroup(Request $request, $id)
+    public function createGroup(Request $request)
     {
         $header = '<div class="block-header">';
         $header .= '<h2 style="display: inline;">Grup</h2>';

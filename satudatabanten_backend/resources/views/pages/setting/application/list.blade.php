@@ -46,27 +46,30 @@
     <script type="text/javascript">
         $(document).ready(function() {
             var tbl = $('#table1').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('application.list') !!}',
-                columns: [
-                    { data: 'rownum', name: 'rownum', className: 'text-center' },
-                    { data: 'setting_code', name: 'setting_code', className: 'text-center' },
-                    { data: 'setting_name', name: 'setting_name', className: 'text-left' },
-                    { data: 'setting_value', name: 'setting_value', className: 'text-left' },
-                    { data: 'setting_create_date', name: 'setting_create_date', className: 'text-center' },
-                    { data: 'setting_status_name', name: 'setting_status_name', className: 'text-center' },
-                    { data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center' }
+                "order": [[ 0, "desc" ]],
+                "aoColumns": [
+                    { "sClass": "text-center" },
+                    { "sClass": "text-center" },
+                    { "sClass": "text-left" },
+                    { "sClass": "text-left" },
+                    { "sClass": "text-center" },
+                    { "sClass": "text-center" },
+                    { "sClass": "text-center", "bSortable": false }
                 ],
-                fnDrawCallback: function (e) {
-                    $('[data-toggle="tooltip"]').tooltip({delay: 50, position: 'top'});
+                "bProcessing": true,
+                "bServerSide": true,
+                "sAjaxSource": "{!! route('application.list') !!}",
+                "fnServerData": function( sUrl, aoData, fnCallback, oSettings ) {
+                    oSettings.jqXHR = $.ajax({
+                        "url": sUrl,
+                        "data": aoData,
+                        "success": fnCallback,
+                        "dataType": "jsonp",
+                        "cache": false
+                    });
                 },
-                fnRowCallback: function(row, data, iDisplayIndex) {
-                    var info = tbl.page.info();
-                    var page = info.page;
-                    var length = info.length;
-                    var index = (page * length + (iDisplayIndex +1));
-                    $('td:eq(0)', row).html(index);
+                "fnDrawCallback": function (e) {
+                    $('[data-toggle="tooltip"]').tooltip();
                 }
             });
             $('#table1 tbody').on( 'click', '.update-btn', function (e) {

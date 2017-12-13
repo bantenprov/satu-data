@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\RoleUser;
 use Illuminate\Support\Facades\DB;
-use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 class UserController extends Controller
 {
@@ -31,44 +29,54 @@ class UserController extends Controller
 
     public function getList(Request $request)
     {
-        DB::statement(DB::raw('set @rownum=0'));
-        $datas = DB::table('view_users')
-            ->select([DB::raw('@rownum  := @rownum + 1 AS rownum'),
-                'id',
-                'nik',
-                'name',
-                'role_name',
-                'created_at',
-                'status',
-                'status_name'])
-            ->get();
-        $datatables = Datatables::of($datas)
-            ->addColumn('created_at', function ($datas) {
-                return dateEnToId($datas->created_at,'d M Y');
-            })
-            ->addColumn('status_name', function ($datas) {
-                if($datas->status > 0) {
-                    $status = '<span class="badge bgm-lightgreen">'.$datas->status_name.'</span>';
-                }else{
-                    $status = '<span class="badge bgm-red">'.$datas->status_name.'</span>';
+        $default_order = 'id';
+        $order_field = array(
+            'nik',
+            'name',
+            'role_name',
+            'status_name',
+            'created_at'
+        );
+        $order_key 	= (!$request->input('iSortCol_0'))?0:$request->input('iSortCol_0');
+        $order 		= (!$request->input('iSortCol_0'))?$default_order:$order_field[$order_key];
+        $sort 		= (!$request->input('sSortDir_0'))?'desc':$request->input('sSortDir_0');
+        $search 	= (!$request->input('sSearch'))?'':strtoupper($request->input('sSearch'));
+
+        $limit 		= (!$request->input('iDisplayLength'))?10:$request->input('iDisplayLength');
+        $start 		= (!$request->input('iDisplayStart'))?0:$request->input('iDisplayStart');
+
+        $sEcho 			= (!$request->input('callback'))?0:$request->input('callback');
+        $iTotalRecords 	= DB::table('view_users')->count();
+
+        $query = DB::table('view_users');
+        if($search!='' AND $order_field!=''){
+            $likeclause = '';
+            $i=0;
+            foreach($order_field as $field){
+                if($i==count($order_field)-1) {
+                    $likeclause .= "UPPER(".$field.") LIKE '%".strtoupper($search)."%'";
+                } else {
+                    $likeclause .= "UPPER(".$field.") LIKE '%".strtoupper($search)."%' OR ";
                 }
-                return $status;
-            })
-            ->addColumn('action', function ($datas) {
-                $action = (Auth::user()->can('read-users') ? '<a href="'.route('user.detail',base64_encode($datas->id)).'" class="btn btn-primary waves-effect" data-toggle="tooltip" data-original-title="Detil" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-format-subject"></i></a>':'');
-                if($datas->status > 0){
-                    $action .= (Auth::user()->can('update-users') ? '&nbsp;<a href="'.route('user.update',base64_encode($datas->id)).'" class="btn btn-warning waves-effect update-btn" data-toggle="tooltip" data-original-title="Ubah" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-edit"></i></a>':'');
-                    $action .= (Auth::user()->can('delete-users') ? '&nbsp;<a href="'.route('user.unactivate',base64_encode($datas->id)).'" class="btn btn-danger waves-effect unactivate-btn" data-toggle="tooltip" data-original-title="Non-Aktifkan" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-close"></i></a>':'');
-                }else{
-                    $action .= (Auth::user()->can('update-users') ? '&nbsp;<a href="'.route('user.activate',base64_encode($datas->id)).'" class="btn btn-success waves-effect activate-btn" data-toggle="tooltip" data-original-title="Aktifkan" data-placement="top" style="padding: 3px 8px;"><i class="zmdi zmdi-check"></i></a>':'');
-                }
-                return $action;
-            })
-            ->rawColumns(['status_name','action']);
-        if ($keyword = $request->get('search')['value']) {
-            $datatables->filterColumn('rownum', 'whereRaw', '@rownum  + 1 like ?', ["%{$keyword}%"]);
+                ++$i;
+            }
+            $query = $query->whereRaw($likeclause);
         }
-        return $datatables->make(true);
+
+        if (empty($order) || empty($sort)){
+            $query = $query->orderBy('id','ASC');
+        } else {
+            $query = $query->orderBy($order, $sort);
+        }
+        $users = $query->limit($limit)->offset($start)->get();
+        $start      = (($start == 0) ? 0 : $start);
+        $callback 	= $request->input('callback');
+        return view('pages.setting.user.json')
+            ->with('sEcho', $sEcho)
+            ->with('iTotalRecords', $iTotalRecords)
+            ->with('users', $users)
+            ->with('start', $start)
+            ->with('callback', $callback);
     }
 
     public function createUser(Request $request)

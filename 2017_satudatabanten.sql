@@ -10,10 +10,29 @@ Target Server Type    : MariaDB
 Target Server Version : 100125
 File Encoding         : 65001
 
-Date: 2017-11-26 16:01:21
+Date: 2017-12-13 13:49:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for about
+-- ----------------------------
+DROP TABLE IF EXISTS `about`;
+CREATE TABLE `about` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` varchar(5000) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of about
+-- ----------------------------
+INSERT INTO `about` VALUES ('1', 'Tentang Kami', '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque vel arcu et pulvinar. Integer non felis nulla. Duis sed felis pellentesque, mattis nisi at, imperdiet urna. Aliquam mi diam, lobortis eu vehicula eget, scelerisque vitae lacus. Praesent consectetur ligula tristique interdum porta. Aliquam erat volutpat. Sed efficitur enim magna. Vestibulum sagittis ipsum sit amet imperdiet condimentum.\r\n\r\nSuspendisse eget tincidunt neque, pulvinar convallis lorem. Integer volutpat luctus lacus tincidunt venenatis. Fusce nec porttitor erat. Vivamus vulputate sodales blandit. Maecenas pharetra libero justo, ut vestibulum elit aliquet nec. Sed odio lectus, molestie a auctor id, eleifend sed nibh. Aliquam pellentesque iaculis consequat. Nullam et sem diam. Ut at eros dui. Mauris bibendum porttitor tortor, at sagittis tortor iaculis a. Praesent vitae pretium enim, at efficitur erat. Nullam tincidunt ut lectus sed viverra. </p><p>Praesent quis mollis tortor.\r\n\r\nSed egestas, urna at tincidunt feugiat, felis ipsum posuere turpis, nec auctor ligula ex eget nunc. Aenean interdum vulputate suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quam nisl, semper et eros id, lacinia ultrices felis. Fusce porta velit eget arcu commodo, non efficitur neque fringilla. Vestibulum a tincidunt est, eget eleifend lorem. Morbi volutpat bibendum dui. Praesent turpis nisi, vestibulum ut auctor ac, pulvinar eget nulla. Donec eleifend ex commodo, tempor libero non, bibendum turpis. Ut malesuada tempor ante, ut elementum ipsum gravida eget. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Ut id purus dolor. Vivamus eget placerat nisi. Etiam eu pretium urna. Mauris venenatis nisl vel elit malesuada rhoncus. Nam eu laoreet leo.\r\n\r\nMaecenas porta eu nulla quis volutpat. Aenean pretium massa vitae metus fringilla, a dignissim enim auctor. Etiam sit amet rutrum tellus. Pellentesque porttitor a dui nec pharetra. Proin sed posuere tellus, a pretium erat. </p><p>Donec nibh metus, consequat sed metus non, porttitor vestibulum nisl. Nulla feugiat nibh sed velit semper porta. Vestibulum et est arcu. Curabitur vitae lectus eu felis interdum eleifend nec pellentesque tellus.\r\n\r\nEtiam ullamcorper, magna eget vestibulum ultrices, ligula dolor volutpat elit, a posuere risus leo at lectus. Cras quis sapien ac mi ultricies ultrices nec consequat orci. Ut eget lectus at purus consectetur elementum nec sit amet nunc. Etiam laoreet tincidunt mi, ac semper magna. Phasellus iaculis libero in libero consequat, a accumsan urna viverra. Suspendisse mollis ligula a iaculis ultricies. </p><p>Nulla quis nisl ut nulla condimentum dictum sit amet ut enim. Fusce sed nunc consectetur, venenatis libero ut, vulputate lacus. Phasellus posuere pharetra nulla, in accumsan libero condimentum eget. Aenean rutrum hendrerit felis eget vestibulum. Fusce sapien diam, viverra eget ornare eget, pellentesque quis enim. Donec vel ante eu metus dignissim tempus. Aliquam vehicula neque eget felis scelerisque, eu malesuada ligula faucibus. Sed ultrices diam ex, quis lacinia lorem posuere eu.</p>', 'about.jpg', '2017-12-04 13:59:28', '2017-12-06 09:33:35');
 
 -- ----------------------------
 -- Table structure for back_menus
@@ -33,7 +52,7 @@ CREATE TABLE `back_menus` (
   `menu_status` int(11) DEFAULT NULL,
   `menu_log_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of back_menus
@@ -48,6 +67,7 @@ INSERT INTO `back_menus` VALUES ('7', '0', 'Pengaturan', 'javascript:void(0);', 
 INSERT INTO `back_menus` VALUES ('8', '7', 'Aplikasi', 'setting/applications', '1', 'fa fa-chevron-circle-right', '2017-10-24 17:07:34', '1', null, null, '1', null);
 INSERT INTO `back_menus` VALUES ('9', '7', 'Akses', 'setting/accesses', '2', 'fa fa-chevron-circle-right', '2017-10-24 17:07:34', '1', null, null, '1', null);
 INSERT INTO `back_menus` VALUES ('10', '7', 'Pengguna', 'setting/users', '3', 'fa fa-chevron-circle-right', '2017-10-24 17:07:34', '1', null, null, '1', null);
+INSERT INTO `back_menus` VALUES ('11', '7', 'Tentang ', 'setting/about', '4', 'fa fa-chevron-circle-right', '2017-10-24 17:07:34', '1', null, null, '1', null);
 
 -- ----------------------------
 -- Table structure for migrations
@@ -58,7 +78,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
@@ -66,7 +86,38 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` VALUES ('1', '2014_10_12_000000_create_users_table', '1');
 INSERT INTO `migrations` VALUES ('2', '2014_10_12_100000_create_password_resets_table', '1');
 INSERT INTO `migrations` VALUES ('3', '2017_11_13_042837_laratrust_setup_tables', '1');
-INSERT INTO `migrations` VALUES ('4', '2017_11_08_053023_create_laravel_opd_table', '2');
+INSERT INTO `migrations` VALUES ('7', '2017_11_08_053023_create_laravel_opd_table', '2');
+
+-- ----------------------------
+-- Table structure for opd
+-- ----------------------------
+DROP TABLE IF EXISTS `opd`;
+CREATE TABLE `opd` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kunker` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `kunker_sinjab` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `kunker_simral` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `levelunker` int(11) NOT NULL,
+  `njab` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `npej` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `_lft` int(10) unsigned NOT NULL DEFAULT '0',
+  `_rgt` int(10) unsigned NOT NULL DEFAULT '0',
+  `parent_id` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `opd_id_unique` (`id`),
+  KEY `opd__lft__rgt_parent_id_index` (`_lft`,`_rgt`,`parent_id`),
+  KEY `opd_kunker_index` (`kunker`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ----------------------------
+-- Records of opd
+-- ----------------------------
+INSERT INTO `opd` VALUES ('431467DF-EFC2-4032-AE05-2405FF01D982', '000400000000000', 'Dinas Pendidikan dan Kebudayaan', '', '', '1', 'Kepala', 'Hendra', '5', '6', null, '2017-12-13 06:37:59', '2017-12-13 06:37:59');
+INSERT INTO `opd` VALUES ('EFD924FF-F03B-4AF5-83DE-0E14B1EB2525', '000101000000000', 'Asisten Pemerintahan dan Kesejahteraan Rakyat', '', '', '2', 'Sekretaris', 'Linda', '2', '3', 'F9739A54-809D-474E-9DDA-9C8C524AB7E3', '2017-12-13 06:44:52', '2017-12-13 06:44:52');
+INSERT INTO `opd` VALUES ('F9739A54-809D-474E-9DDA-9C8C524AB7E3', '000100000000000', 'Sekretariat Daerah', '', '', '1', 'Kepala', 'Joko', '1', '4', null, '2017-12-13 06:25:01', '2017-12-13 06:25:01');
 
 -- ----------------------------
 -- Table structure for password_resets
@@ -97,7 +148,7 @@ CREATE TABLE `permissions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `permissions_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of permissions
@@ -129,6 +180,10 @@ INSERT INTO `permissions` VALUES ('24', 'create-users', '10', 'Create Users', 'C
 INSERT INTO `permissions` VALUES ('25', 'read-users', '10', 'Read Users', 'Read Users', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
 INSERT INTO `permissions` VALUES ('26', 'update-users', '10', 'Update Users', 'Update Users', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
 INSERT INTO `permissions` VALUES ('27', 'delete-users', '10', 'Delete Users', 'Delete Users', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
+INSERT INTO `permissions` VALUES ('28', 'create-about', '11', 'Create About', 'Create About', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
+INSERT INTO `permissions` VALUES ('29', 'read-about', '11', 'Read About', 'Read About', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
+INSERT INTO `permissions` VALUES ('30', 'update-about', '11', 'Update About', 'Update About', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
+INSERT INTO `permissions` VALUES ('31', 'delete-about', '11', 'Delete About', 'Delete About', '2017-11-13 05:11:53', '2017-11-13 05:11:53');
 
 -- ----------------------------
 -- Table structure for permission_role
@@ -203,6 +258,10 @@ INSERT INTO `permission_role` VALUES ('24', '1');
 INSERT INTO `permission_role` VALUES ('25', '1');
 INSERT INTO `permission_role` VALUES ('26', '1');
 INSERT INTO `permission_role` VALUES ('27', '1');
+INSERT INTO `permission_role` VALUES ('28', '1');
+INSERT INTO `permission_role` VALUES ('29', '1');
+INSERT INTO `permission_role` VALUES ('30', '1');
+INSERT INTO `permission_role` VALUES ('31', '1');
 
 -- ----------------------------
 -- Table structure for permission_user
@@ -220,33 +279,6 @@ CREATE TABLE `permission_user` (
 -- ----------------------------
 -- Records of permission_user
 -- ----------------------------
-
--- ----------------------------
--- Table structure for ref_unkerjas
--- ----------------------------
-DROP TABLE IF EXISTS `ref_unkerjas`;
-CREATE TABLE `ref_unkerjas` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `kunker` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `kunker_simral` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `levelunker` int(11) NOT NULL,
-  `_lft` int(10) unsigned NOT NULL DEFAULT '0',
-  `_rgt` int(10) unsigned NOT NULL DEFAULT '0',
-  `parent_id` int(10) unsigned DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ref_unkerjas__lft__rgt_parent_id_index` (`_lft`,`_rgt`,`parent_id`),
-  KEY `ref_unkerjas_kunker_index` (`kunker`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- ----------------------------
--- Records of ref_unkerjas
--- ----------------------------
-INSERT INTO `ref_unkerjas` VALUES ('1', '000100000000000', 'Sekretariat Daerah', '', '1', '1', '4', null, '2017-11-25 19:35:44', '2017-11-25 19:35:44');
-INSERT INTO `ref_unkerjas` VALUES ('2', '000101000000000', 'Asisten Pemerintahan dan Kesejahteraan Rakyat', '', '2', '5', '6', '1', '2017-11-25 19:45:55', '2017-11-25 19:45:55');
-INSERT INTO `ref_unkerjas` VALUES ('3', '000101010000000', 'Biro Pemerintahan', '', '3', '2', '3', '1', '2017-11-25 20:22:51', '2017-11-25 20:22:51');
 
 -- ----------------------------
 -- Table structure for roles
@@ -313,7 +345,7 @@ CREATE TABLE `settings` (
   `setting_status` int(11) DEFAULT NULL,
   `setting_log_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`setting_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of settings
@@ -325,6 +357,8 @@ INSERT INTO `settings` VALUES ('4', 'CFG001', 'Footer', 'Copyright © 2017 <a hr
 INSERT INTO `settings` VALUES ('5', 'CFG001', 'Footer', 'Copyright © 2017 <a href=\"\">Satu Data Banten</a> Developed By <a href=\"mkitech.co.di\">PT. Mediatama Kreasi Informatika</a>', '1', '2017-11-10 10:39:31', null, null, '0', '1');
 INSERT INTO `settings` VALUES ('6', 'CFG001', 'Footer', 'Copyright © 2017 <a href=\"\">Satu Data Banten</a> Developed By <a href=\"mkitech.co.di\">PT. Mediatama Kreasi Informatika</a>', '1', '2017-11-10 10:39:31', null, null, '1', '1');
 INSERT INTO `settings` VALUES ('7', 'CFG001', 'Footer', 'Copyright © 2017 <a href=\"\">Satu Data Banten</a> Developed By <a href=\"mkitech.co.di\">PT. Mediatama Kreasi Informatika</a>', '1', '2017-11-10 10:39:31', null, null, '0', '1');
+INSERT INTO `settings` VALUES ('8', 'CFG001', 'Footer', 'Copyright © 2017 <a href=\"\">Satu Data Banten</a> Developed By <a href=\"mkitech.co.di\">PT. Mediatama Kreasi Informatika</a>', '1', '2017-11-10 10:39:31', null, null, '1', '1');
+INSERT INTO `settings` VALUES ('9', 'CFG001', 'Footer', 'Copyright © 2017 <a href=\"\">Satu Data Banten</a> Developed By <a href=\"mkitech.co.di\">PT. Mediatama Kreasi Informatika</a>', '1', '2017-11-10 10:39:31', null, null, '0', '1');
 
 -- ----------------------------
 -- Table structure for users
@@ -350,11 +384,11 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'Superadministrator', 'superadministrator@app.com', '001', '$2y$10$0ckU.Hj5Is/AKIQGSxF14OB8H5M2cYsMzuSy1t3sf24wOI5vvu9v6', 'H0FqjfgT1Ruj6S0nyLOKpO1gKNvn9jU2KfGPhYaG', '1', '2017-11-13 05:11:53', '7', '2017-11-25 08:24:29', '1', null);
-INSERT INTO `users` VALUES ('2', 'Administrator', 'administrator@app.com', '002', '$2y$10$7U1wjA/uwU8qyD0bTXiomu.7gxmRcoZnGwLQYvHQeOcuEZjUZPLzK', 'YnFg8QzhqDFdcVw5PJC89wqXKeLEdMOCXnKS9sWARK7BuZ8Jy1W76Ho8TZ03', '1', '2017-11-13 05:11:53', '1', '2017-11-13 05:11:53', '1', null);
-INSERT INTO `users` VALUES ('3', 'User', 'user@app.com', '003', '$2y$10$7U1wjA/uwU8qyD0bTXiomu.7gxmRcoZnGwLQYvHQeOcuEZjUZPLzK', 'hkoNWCglw7eIaUOPtfw05YwSP6QQzv25dldjtlkwy1rjnLMFS9ixCVkq4tpL', '1', '2017-11-13 05:11:53', '1', '2017-11-13 05:11:53', '1', null);
-INSERT INTO `users` VALUES ('4', 'Cru User', 'cru_user@app.com', '004', '$2y$10$7U1wjA/uwU8qyD0bTXiomu.7gxmRcoZnGwLQYvHQeOcuEZjUZPLzK', 'TmQT1FqLQQ', '1', '2017-11-13 05:11:53', '1', '2017-11-19 08:40:55', '1', null);
-INSERT INTO `users` VALUES ('7', 'Indra Laksmana', 'laksmana.d.indra@gmail.com', '005', '$2y$10$5YRT6I6ogjN.UkNWQ.6rau.x4/r/naQFm77.FtcVzNx2nn3guWFGS', 'uJw7eLRRNptKFJfrZ3QR0MBjsY7wbVKoW6uNgtrSDxCEcQJAaHg7t30s88RX', '1', '2017-11-25 07:36:35', '7', '2017-11-25 08:25:20', '1', null);
+INSERT INTO `users` VALUES ('1', 'Superadministrator', 'superadministrator@app.com', '001', '$2y$10$IbkXquXCKuHVSKAc53UZ9OOQ/u1w14HXED/wcYWyuYF/AVrzJw2/W', 'v0iEutUFykTx0DMNIL7moubDl5xZt5XPTFAZ9XRE8U0bqw7HS0CsfRlRQ4FW', '1', '2017-11-13 05:11:53', '7', '2017-11-25 08:24:29', '1', null);
+INSERT INTO `users` VALUES ('2', 'Administrator', 'administrator@app.com', '002', '$2y$10$IbkXquXCKuHVSKAc53UZ9OOQ/u1w14HXED/wcYWyuYF/AVrzJw2/W', 'I0SPFstS7c3YvQhgzlSsanN9GIAXImzKyvOuZWeQQUZk9881K7aI7nneZeBj', '1', '2017-11-13 05:11:53', '1', '2017-11-13 05:11:53', '1', null);
+INSERT INTO `users` VALUES ('3', 'User', 'user@app.com', '003', '$2y$10$IbkXquXCKuHVSKAc53UZ9OOQ/u1w14HXED/wcYWyuYF/AVrzJw2/W', 'hkoNWCglw7eIaUOPtfw05YwSP6QQzv25dldjtlkwy1rjnLMFS9ixCVkq4tpL', '1', '2017-11-13 05:11:53', '1', '2017-11-13 05:11:53', '1', null);
+INSERT INTO `users` VALUES ('4', 'Cru User', 'cru_user@app.com', '004', '$2y$10$IbkXquXCKuHVSKAc53UZ9OOQ/u1w14HXED/wcYWyuYF/AVrzJw2/W', 'TmQT1FqLQQ', '1', '2017-11-13 05:11:53', '1', '2017-11-19 08:40:55', '1', null);
+INSERT INTO `users` VALUES ('7', 'Indra Laksmana', 'laksmana.d.indra@gmail.com', '005', '$2y$10$IbkXquXCKuHVSKAc53UZ9OOQ/u1w14HXED/wcYWyuYF/AVrzJw2/W', 'uJw7eLRRNptKFJfrZ3QR0MBjsY7wbVKoW6uNgtrSDxCEcQJAaHg7t30s88RX', '1', '2017-11-25 07:36:35', '7', '2017-11-25 08:25:20', '1', null);
 
 -- ----------------------------
 -- View structure for view_permission_roles
